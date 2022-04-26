@@ -25,7 +25,7 @@ while True:
     try:
         token = os.getenv('TOKEN')
         url = 'https://api.github.com/search/repositories?q=+language:{$Pogramming Language}&sort=updated&order=desc&per_page=50'
-        language_res = requests.get(url, headers={"Authorization": "token "})
+        language_res = requests.get(url, headers={"Authorization": token})
         languages_json = language_res.json()
 
         for old_dict in languages_json['items']:
