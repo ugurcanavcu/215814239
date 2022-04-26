@@ -1,4 +1,4 @@
-ersion: '2'
+version: '2'
 
 services:
   spark:
@@ -14,7 +14,7 @@ services:
       - '4040:4040'
       - '4041:4041'
     volumes:
-      - /:/streaming
+      - ./:/streaming
   spark-worker:
     image: eecs4415/spark
     environment:
@@ -31,18 +31,18 @@ services:
       - '24040:4040'
       - '24041:4041'
     volumes:
-      - /:/streaming
+      - ./:/streaming
   data-source:
     image: eecs4415/python
     environment:
       - TOKEN= dummy
     volumes:
-      - /:/streaming
+      - ./:/streaming
     command: python3.9 -u streaming/data_source.py
   webapp:
     image: eecs4415/python
     volumes:
-      - /:/streaming
+      - ./:/streaming
     ports:
       - '5000:5000'
     command: streaming/run-flask.sh
